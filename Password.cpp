@@ -6,12 +6,15 @@ using namespace std;
 
 Password::Password() //constructor
 {
-	
+	viable_words = ListArray();
+	all_words = ListArray();
+	len = size();
 }
 
 Password::~Password() //destructor
 {
-	
+	~listArray(viable_words);
+	~listArray(all_words);
 }
 
 void Password::addWord (string* word) //add a word to possible passwords
