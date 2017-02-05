@@ -1,30 +1,67 @@
 #include "Password.h"
 using CSC2110::ListArrayIterator;
+using CSC2110::ListArray;
 
 #include <iostream>
 using namespace std;
 
 Password::Password() //constructor
 {
-	viable_words = ListArray();
-	all_words = ListArray();
-	len = size();
+	viable_words = new ListArray<String>();
+	all_words = new ListArray<String>();
+	len = 0;
 }
 
 Password::~Password() //destructor
 {
-	~listArray(viable_words);
-	~listArray(all_words);
+	ListArrayIterator<String>*iter = ListArray->iterator();
+	
+	while (iter-> hasNext())
+	{
+		String* word = inter->next();
+		delete word;
+	}
+	
+	delete viable_words;
+	delete all_words;
+	delete iter;
 }
 
 void Password::addWord (string* word) //add a word to possible passwords
 {
+	if (len = 0)
+	{
+		all_words->add(word);
+		len = length(word);
+	}
 	
+	if (len = length(word))
+	{
+		all_words->add(word);
+		viable_words->add(word);
+	}
 }
 
 void Password::guess (int try_password, int num_matches)
 {
+	int num=0;
+
+	ListArrayIterator<String>*iter = all_words->iterator();
 	
+	while(iter->hasNext())
+	{
+		String* nextWord = iter->next();
+		if (nextWord->compare(all_words[try_password-1]) = 0)
+		{
+			newPasswords[num] = ListArray::add(num, nextWord)
+			num++;
+		}
+	}
+	
+	all_words = newPasswords;
+	
+	delete iter;
+	delete newPasswords;
 }
 
 int Password::getNumberOfPasswordsLeft()
@@ -33,11 +70,6 @@ int Password::getNumberOfPasswordsLeft()
 }
 
 void Password::displayViableWords()
-{
-	
-}
-
-int Password::bestGuess()
 {
 	
 }
