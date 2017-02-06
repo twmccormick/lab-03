@@ -67,15 +67,40 @@ void Password::guess (int try_password, int num_matches)
 int Password::getNumberOfPasswordsLeft()
 {
 	
+	return viable_words->size();
+	
 }
 
 void Password::displayViableWords()
 {
 	
+	int count = 1;
+	
+	ListArrayIterator<String>* viable_iter = viable_words->iterator();
+	
+	while (viable_iter->hasNext()){
+		
+		String* viable_words = viable_iter->next();
+		
+		displayString(viable_words->items);
+		
+	}
+	
+	delete viable_words;
+	
 }
 
 String* Password::getOriginalWord (int index)
 {
+	
+	if (index < 20 && index >= 1){
+		
+		return all_words->get(index);
+		
+	}
+	
+
+	
 	
 }
 
