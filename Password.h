@@ -3,8 +3,9 @@
 
 #include "ListArray.h"
 #include "ListArrayIterator.h"
+#include "Text.h"
 using CSC2110::ListArrayIterator;
-using CSC2110::text;
+using CSC2110::String;
 using CSC2110::ListArray;
 
 class Password
@@ -20,12 +21,12 @@ class Password
    public:
 		Password(); //constructor
 		~Password(); //destructor
-		void addWord (string* word); //add a word to possible passwords
-		void guess (int try_password, int num_matches);
+		void addWord(String* word); //add a word to possible passwords
+		void guess(int try_password, int num_matches);
 		int getNumberOfPasswordsLeft();
 		void displayViableWords();
 		int bestGuess();
-		String* getOriginalWord (int index);
+		String* getOriginalWord(int index);
 
 };
 

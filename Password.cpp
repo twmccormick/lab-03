@@ -1,13 +1,11 @@
 #include "Password.h"
-using CSC2110::ListArrayIterator;
-using CSC2110::ListArray;
+#include "Text.h"
 #include "ListArray.h"
 #include "ListArrayIterator.h"
-
-using CSC2110::text;
-
-
 #include <iostream>
+using CSC2110::String;
+using CSC2110::ListArrayIterator;
+using CSC2110::ListArray;
 using namespace std;
 
 Password::Password() //constructor
@@ -19,11 +17,11 @@ Password::Password() //constructor
 
 Password::~Password() //destructor
 {
-	ListArrayIterator<String>*iter = ListArray->iterator();
+	ListArrayIterator<String>*iter = all_words->iterator();
 	
 	while (iter-> hasNext())
 	{
-		String* word = inter->next();
+		String* word = iter->next();
 		delete word;
 	}
 	
@@ -32,12 +30,12 @@ Password::~Password() //destructor
 	delete iter;
 }
 
-int getNumMatches(String* curr_word, String* word_guess){
+int Password::getNumMatches(String* curr_word, String* word_guess){
 	
 	int matches = 0;
 	
-	char[20] currWord;
-	char[20] wordGuess;
+	char currWord[20];
+	char wordGuess[20];
 	
 	currWord = getText(curr_word);
 	wordGuess = getText(word_guess);
@@ -56,7 +54,7 @@ int getNumMatches(String* curr_word, String* word_guess){
 	
 }
 
-void Password::addWord (string* word) //add a word to possible passwords
+void Password::addWord (String* word) //add a word to possible passwords
 {
 	if (len == 0)
 	{
@@ -75,7 +73,7 @@ void Password::addWord (string* word) //add a word to possible passwords
 void Password::guess (int try_password, int num_matches)
 {
 	int num=0;
-
+	newPasswords = new ListArray<String>();
 	ListArrayIterator<String>*iter = all_words->iterator();
 	
 	while(iter->hasNext())
@@ -83,7 +81,7 @@ void Password::guess (int try_password, int num_matches)
 		String* nextWord = iter->next();
 		if (getNumMatches(nextWord, all_words[try_password]) == num_matches)
 		{
-			newPasswords[num] = ListArray::add(num, nextWord)
+			newPasswords[num] = ListArray<String>::add(num, nextWord)
 			num++;
 		}
 	}
@@ -112,7 +110,7 @@ void Password::displayViableWords()
 		
 		String* viable_words = viable_iter->next();
 		
-		displayString(viable_words->items);
+		displayString(viable_words->text);
 		
 	}
 	
