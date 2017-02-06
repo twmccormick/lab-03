@@ -27,15 +27,40 @@ Password::~Password() //destructor
 	delete iter;
 }
 
+int getNumMatches(String* curr_word, String* word_guess){
+	
+	int matches = 0;
+	
+	char[20] currWord;
+	char[20] wordGuess;
+	
+	currWord = getText(curr_word);
+	wordGuess = getText(word_guess);
+	
+	for (int i=0; i < 11; i++){
+		
+		if (currWord[i] == wordGuess[i]){
+			
+			matches++;
+			
+		}
+		
+	}
+	
+	return matches;
+	
+}
+
 void Password::addWord (string* word) //add a word to possible passwords
 {
 	if (len = 0)
 	{
 		all_words->add(word);
+		viable_words->add(word);
 		len = length(word);
 	}
 	
-	if (len = length(word))
+	else if (len = length(word))
 	{
 		all_words->add(word);
 		viable_words->add(word);
@@ -51,7 +76,7 @@ void Password::guess (int try_password, int num_matches)
 	while(iter->hasNext())
 	{
 		String* nextWord = iter->next();
-		if (nextWord->compare(all_words[try_password-1]) = 0)
+		if (getNumMatches(nextWord, all_words[try_password]) == num_matches)
 		{
 			newPasswords[num] = ListArray::add(num, nextWord)
 			num++;
