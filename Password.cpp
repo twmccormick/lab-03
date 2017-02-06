@@ -110,7 +110,7 @@ void Password::displayViableWords()
 		
 		String* viable_words = viable_iter->next();
 		
-		displayString(viable_words->text);
+		displayString(viable_words);
 		
 	}
 	
