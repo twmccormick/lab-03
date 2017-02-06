@@ -1,6 +1,11 @@
 #include "Password.h"
 using CSC2110::ListArrayIterator;
 using CSC2110::ListArray;
+#include "ListArray.h"
+#include "ListArrayIterator.h"
+
+using CSC2110::text;
+
 
 #include <iostream>
 using namespace std;
@@ -53,14 +58,14 @@ int getNumMatches(String* curr_word, String* word_guess){
 
 void Password::addWord (string* word) //add a word to possible passwords
 {
-	if (len = 0)
+	if (len == 0)
 	{
 		all_words->add(word);
 		viable_words->add(word);
 		len = length(word);
 	}
 	
-	else if (len = length(word))
+	else if (len == length(word))
 	{
 		all_words->add(word);
 		viable_words->add(word);
