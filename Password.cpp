@@ -73,7 +73,7 @@ void Password::addWord (String* word) //add a word to possible passwords
 void Password::guess (int try_password, int num_matches)
 {
 	int num=0;
-	newPasswords = new ListArray<String>();
+	ListArray<String>* newPasswords;
 	ListArrayIterator<String>*iter = all_words->iterator();
 	
 	while(iter->hasNext())
@@ -81,7 +81,7 @@ void Password::guess (int try_password, int num_matches)
 		String* nextWord = iter->next();
 		if (getNumMatches(nextWord, all_words[try_password]) == num_matches)
 		{
-			newPasswords[num] = ListArray<String>::add(num, nextWord)
+			newPasswords->add(num, nextWord);
 			num++;
 		}
 	}
