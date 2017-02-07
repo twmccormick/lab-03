@@ -37,8 +37,8 @@ int Password::getNumMatches(String* curr_word, String* word_guess){
 	char currWord[20];
 	char wordGuess[20];
 	
-	currWord = getText(curr_word);
-	wordGuess = getText(word_guess);
+	currWord = curr_word->getText();
+	wordGuess = word_guess->getText();
 	
 	for (int i=0; i < 11; i++){
 		
@@ -102,6 +102,8 @@ int Password::getNumberOfPasswordsLeft()
 void Password::displayViableWords()
 {
 	
+	
+	
 	int count = 1;
 	
 	ListArrayIterator<String>* viable_iter = viable_words->iterator();
@@ -110,7 +112,7 @@ void Password::displayViableWords()
 		
 		String* viable_words = viable_iter->next();
 		
-		displayString(viable_words);
+		viable_words->displayString();
 		
 	}
 	
