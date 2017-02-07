@@ -60,10 +60,10 @@ void Password::addWord (String* word) //add a word to possible passwords
 	{
 		all_words->add(word);
 		viable_words->add(word);
-		len = length(word);
+		len = word->length();
 	}
 	
-	else if (len == length(word))
+	else if (len == word->length())
 	{
 		all_words->add(word);
 		viable_words->add(word);
